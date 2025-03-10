@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Page 1 - Heading/Contact Info</title>
+    <link
+      href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css"
+      rel="stylesheet"
+    />
+    <style>
+      .bg-gradient {
+        background-image: linear-gradient(
+          to right top,
+          #0052d4,
+          #4364f7,
+          #6fb1fc,
+          #a1d8ff,
+          #cae6ff
+        );
+      }
+    </style>
+  </head>
+  <body class="flex h-screen">
+    <aside class="bg-gray-800 text-white w-64 p-4">
+      <h1 class="text-2xl font-bold mb-6">Limonify</h1>
+      <nav>
+        <a href="index.html" class="block py-2">Heading</a>
+        <a href="page2.html" class="block py-2">Education</a>
+        <a href="page3.html" class="block py-2">Professional Experience</a>
+        <a href="page4.html" class="block py-2">Skills</a>
+        <a href="page5.html" class="block py-2">Summary</a>
+        <a href="page6.html" class="block py-2">Finalize</a>
+      </nav>
+    </aside>
+
+    <main class="flex-1 p-8">
+      <h2 class="text-2xl font-semibold mb-4 text-gray-800">
+        What's the best way for employers to contact you?
+      </h2>
+      <p class="mb-4 text-gray-600">
+        We suggest including an email and phone number.
+      </p>
+      <p class="mb-4 text-gray-600">* indicates a required field</p>
+
+      <form id="contact-form">
+        <div class="grid grid-cols-2 gap-4 mb-4">
+          <div>
+            <label for="name" class="block text-sm font-medium text-gray-700"
+              >NAME</label
+            >
+            <input
+              type="text"
+              id="name"
+              name="name"
+              class="mt-1 p-2 border rounded w-full"
+            />
+          </div>
+          <div>
+            <label for="surname" class="block text-sm font-medium text-gray-700"
+              >SURNAME</label
+            >
+            <input
+              type="text"
+              id="surname"
+              name="surname"
+              class="mt-1 p-2 border rounded w-full"
+            />
+          </div>
+        </div>
+
+        <div class="mb-4">
+          <label
+            for="profession"
+            class="block text-sm font-medium text-gray-700"
+            >PROFESSION</label
+          >
+          <input
+            type="text"
+            id="profession"
+            name="profession"
+            class="mt-1 p-2 border rounded w-full"
+          />
+        </div>
+
+        <div class="grid grid-cols-3 gap-4 mb-4">
+          <div>
+            <label for="city" class="block text-sm font-medium text-gray-700"
+              >CITY</label
+            >
+            <input
+              type="text"
+              id="city"
+              name="city"
+              class="mt-1 p-2 border rounded w-full"
+              value="Narayanganj"
+            />
+          </div>
+          <div>
+            <label
+              for="postcode"
+              class="block text-sm font-medium text-gray-700"
+              >POSTCODE</label
+            >
+            <input
+              type="text"
+              id="postcode"
+              name="postcode"
+              class="mt-1 p-2 border rounded w-full"
+            />
+          </div>
+          <div>
+            <label
+              for="division"
+              class="block text-sm font-medium text-gray-700"
+              >DIVISION</label
+            >
+            <input
+              type="text"
+              id="division"
+              name="division"
+              class="mt-1 p-2 border rounded w-full"
+              value="Dhaka"
+            />
+          </div>
+        </div>
+
+        <div class="grid grid-cols-2 gap-4 mb-4">
+          <div>
+            <label for="phone" class="block text-sm font-medium text-gray-700"
+              >PHONE</label
+            >
+            <input
+              type="tel"
+              id="phone"
+              name="phone"
+              class="mt-1 p-2 border rounded w-full"
+            />
+          </div>
+          <div>
+            <label for="email" class="block text-sm font-medium text-gray-700"
+              >EMAIL ADDRESS</label
+            >
+            <input
+              type="email"
+              id="email"
+              name="email"
+              class="mt-1 p-2 border rounded w-full"
+            />
+          </div>
+        </div>
+
+        <div class="flex justify-between">
+          <button
+            type="button"
+            class="bg-gray-300 hover:bg-gray-400 text-gray-800 font-bold py-2 px-4 rounded"
+          >
+            Preview
+          </button>
+          <button
+            type="submit"
+            class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded"
+          >
+            Next: Education
+          </button>
+        </div>
+      </form>
+    </main>
+
+    <script src="/Scripts/script1.js"></script>
+  </body>
+</html>

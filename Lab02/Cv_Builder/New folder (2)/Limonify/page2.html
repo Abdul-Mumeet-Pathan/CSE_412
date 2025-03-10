@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Page 2 - Education</title>
+    <link
+      href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css"
+      rel="stylesheet"
+    />
+  </head>
+  <body class="flex h-screen">
+    <aside class="bg-gray-800 text-white w-64 p-4">
+      <h1 class="text-2xl font-bold mb-6">Limonify</h1>
+      <nav>
+        <a href="index.html" class="block py-2">Heading</a>
+        <a href="page2.html" class="block py-2">Education</a>
+        <a href="page3.html" class="block py-2">Professional Experience</a>
+        <a href="page4.html" class="block py-2">Skills</a>
+        <a href="page5.html" class="block py-2">Summary</a>
+        <a href="page6.html" class="block py-2">Finalize</a>
+      </nav>
+    </aside>
+
+    <main class="flex-1 p-8">
+      <div class="flex justify-between items-center mb-4">
+        <a href="index.html" class="text-blue-500">&larr; Go Back</a>
+        <span class="text-blue-500">Tips</span>
+      </div>
+
+      <h2 class="text-2xl font-semibold mb-4">Tell us about your education</h2>
+      <p class="mb-4">
+        Enter your education experience so far, even if you are a current
+        student or did not graduate.
+      </p>
+      <p class="mb-4">* indicates a required field</p>
+
+      <form id="education-form">
+        <div class="grid grid-cols-2 gap-4 mb-4">
+          <div>
+            <label
+              for="institution"
+              class="block text-sm font-medium text-gray-700"
+              >INSTITUTION *</label
+            >
+            <input
+              type="text"
+              id="institution"
+              name="institution"
+              class="mt-1 p-2 border rounded w-full"
+            />
+          </div>
+          <div>
+            <label
+              for="institution-location"
+              class="block text-sm font-medium text-gray-700"
+              >INSTITUTION LOCATION</label
+            >
+            <input
+              type="text"
+              id="institution-location"
+              name="institution-location"
+              class="mt-1 p-2 border rounded w-full"
+            />
+          </div>
+        </div>
+
+        <div class="mb-4">
+          <label for="degree" class="block text-sm font-medium text-gray-700"
+            >DEGREE</label
+          >
+          <select
+            id="degree"
+            name="degree"
+            class="mt-1 p-2 border rounded w-full"
+          >
+            <option value="Bachelor of Science">Bachelor of Science</option>
+            <option value="Master of Science">Master of Science</option>
+            <option value="Bachelor of Arts">Bachelor of Arts</option>
+            <option value="Associate Degree">Associate Degree</option>
+          </select>
+        </div>
+
+        <div class="grid grid-cols-2 gap-4 mb-4">
+          <div>
+            <label
+              for="field-of-study"
+              class="block text-sm font-medium text-gray-700"
+              >FIELD OF STUDY</label
+            >
+            <input
+              type="text"
+              id="field-of-study"
+              name="field-of-study"
+              class="mt-1 p-2 border rounded w-full"
+            />
+          </div>
+          <div class="flex items-end">
+            <label
+              for="graduation-date"
+              class="block text-sm font-medium text-gray-700"
+              >GRADUATION DATE (OR EXPECTED GRADUATION DATE)</label
+            >
+            <div class="flex items-center space-x-2 mt-1">
+              <select
+                id="graduation-month"
+                name="graduation-month"
+                class="p-2 border rounded"
+              >
+                <option value="January">January</option>
+                <option value="February">February</option>
+                <option value="March">March</option>
+                <option value="April">April</option>
+                <option value="May">May</option>
+                <option value="June">June</option>
+                <option value="July">July</option>
+                <option value="August">August</option>
+                <option value="September">September</option>
+                <option value="October">October</option>
+                <option value="November">November</option>
+                <option value="December">December</option>
+              </select>
+              <select
+                id="graduation-year"
+                name="graduation-year"
+                class="p-2 border rounded"
+              >
+                <option value="2018">2018</option>
+                <option value="2019">2019</option>
+                <option value="2020">2020</option>
+                <option value="2021">2021</option>
+                <option value="2022">2022</option>
+                <option value="2023">2023</option>
+              </select>
+            </div>
+          </div>
+        </div>
+
+        <div class="mb-4">
+          <label
+            for="additional-coursework"
+            class="block text-sm font-medium text-gray-700"
+            >Add any additional coursework you're proud to showcase</label
+          >
+          <textarea
+            id="additional-coursework"
+            name="additional-coursework"
+            class="mt-1 p-2 border rounded w-full"
+          ></textarea>
+        </div>
+
+        <div class="flex justify-between">
+          <button
+            type="button"
+            class="bg-gray-300 hover:bg-gray-400 text-gray-800 font-bold py-2 px-4 rounded"
+          >
+            Preview
+          </button>
+          <button
+            type="submit"
+            class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded"
+          >
+            Next
+          </button>
+        </div>
+      </form>
+    </main>
+
+    <script src="/Scripts/script2.js"></script>
+  </body>
+</html>

@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Professional Resume & Cover Letter Tools</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <header>
+        <div class="logo"> <img src="logo.png" alt="Logo"> </div>
+        <nav>
+            <ul>
+                <li><a href="#">Tools</a></li>
+                <li><a href="#">Resume</a></li>
+                <li><a href="#">CV</a></li>
+                <li><a href="#">Cover Letter</a></li>
+                <li><a href="#">Career Blog</a></li>
+                <li><a href="#">About</a></li>
+                <li><button class="login-btn">Login/SIgnup</button></li>
+            </ul>
+        </nav>
+    </header>
+
+    <section class="hero">
+        <h1>Professional Resume & Cover Letter Tools</h1>
+        <p>For Any Job</p>
+        <p>Create a job-winning resume in minutes with our easy-to-use builder.</p>
+        <button class="cta">Create Your Resume Now</button>
+    </section>
+
+    <section class="features">
+        <div class="feature">
+            <img src="icon1.png" alt="Career Tools">
+            <h3>Cutting Edge Career Tools</h3>
+            <p>Build a matching resume and cover letter with step-by-step guidance.</p>
+        </div>
+        <div class="feature">
+            <img src="icon2.png" alt="Experience">
+            <h3>Extensive Experience</h3>
+            <p>Use our vast industry expertise to land your dream job faster.</p>
+        </div>
+        <div class="feature">
+            <img src="icon3.png" alt="Guides">
+            <h3>Expert-Crafted Guides and Examples</h3>
+            <p>Grow your career with our expert blog cited by universities and media outlets.</p>
+        </div>
+    </section>
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+    // Smooth scrolling for navbar links
+    document.querySelectorAll("nav ul li a").forEach(link => {
+        link.addEventListener("click", function (e) {
+            e.preventDefault();
+            const targetId = this.getAttribute("href").substring(1);
+            const targetSection = document.getElementById(targetId);
+            if (targetSection) {
+                window.scrollTo({
+                    top: targetSection.offsetTop - 50,
+                    behavior: "smooth"
+                });
+            }
+        });
+    });
+
+    document.querySelector(".login-btn").addEventListener("click", function () {
+    window.location.href = "login.html";
+});
+
+
+    // CTA Button Click Alert
+    document.querySelector(".cta").addEventListener("click", function () {
+        alert("Let's start building your professional resume!");
+    });
+
+    // Feature Section Hover Effect
+    document.querySelectorAll(".feature").forEach(feature => {
+        feature.addEventListener("mouseenter", function () {
+            this.style.backgroundColor = "#f0f0f0";
+        });
+        feature.addEventListener("mouseleave", function () {
+            this.style.backgroundColor = "white";
+        });
+    });
+});
+
+    </script>
+</body>
+</html>

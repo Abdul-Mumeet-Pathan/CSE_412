@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login</title>
+    <link rel="stylesheet" href="login.css">
+</head>
+<body>
+    <div class="login-container">
+        <div class="login-box">
+            <img src="logo.png" alt="Logo" class="logo">
+            <h2>Sign-in to Your Account</h2>
+            <form id="loginForm">
+                <div>
+                    <input type="email" id="email" placeholder="Email Address" required>
+                    <span class="error" id="emailError"></span>
+                </div>
+                <div>
+                    <input type="password" id="password" placeholder="Password (Must be between 6-16 characters)" required>
+                    <span class="error" id="passwordError"></span>
+                </div>
+                <button type="button" class="login-btn" id="signInBtn">SIGN IN</button>
+            </form>
+            <p>By clicking on Sign In you also agree to our <a href="#">Terms of Use</a> and <a href="#">Privacy Policy</a></p>
+            <div class="social-login">
+                <button class="facebook-login">Facebook</button>
+                <button class="google-login">Google</button>
+            </div>
+            <p><a href="#">Forgot your password?</a></p>
+            <p>Don't have an account? <button type="button" class="signup-btn" id="signUpBtn">SIGN UP</button></p>
+        </div>
+    </div>
+    <script>
+        document.addEventListener("DOMContentLoaded", function() {
+            const emailInput = document.getElementById("email");
+            const passwordInput = document.getElementById("password");
+            const emailError = document.getElementById("emailError");
+            const passwordError = document.getElementById("passwordError");
+            const signInBtn = document.getElementById("signInBtn");
+
+            function validateInputs() {
+                let isValid = true;
+
+                // Validate email (at least 3 characters before @ and ends with .something)
+                const emailPattern = /^[a-zA-Z0-9._%+-]{3,}@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
+                if (!emailPattern.test(emailInput.value)) {
+                    emailError.textContent = "Please enter a valid email (at least 3 characters before @ and ending with .something)";
+                    emailInput.style.borderColor = "red";
+                    isValid = false;
+                } else {
+                    emailError.textContent = "";
+                    emailInput.style.borderColor = "";
+                }
+
+                // Validate password (6-16 characters)
+                if (passwordInput.value.length < 6 || passwordInput.value.length > 16) {
+                    passwordError.textContent = "Password must be between 6-16 characters";
+                    passwordInput.style.borderColor = "red";
+                    isValid = false;
+                } else {
+                    passwordError.textContent = "";
+                    passwordInput.style.borderColor = "";
+                }
+
+                return isValid;
+            }
+
+            // Prevent Enter key from submitting the form
+            document.getElementById("loginForm").addEventListener("keydown", function(event) {
+                if (event.key === "Enter") {
+                    event.preventDefault();
+                    validateInputs();
+                }
+            });
+
+            // Handle Sign In button click
+            signInBtn.addEventListener("click", function() {
+                if (validateInputs()) {
+                    window.location.href = "dashboard.html"; // Redirect on success
+                }
+            });
+
+            signUpBtn.addEventListener("click", function() {
+                    window.location.href = "signup.html"; // Redirect on success
+            });
+        });
+    </script>
+</body>
+</html>

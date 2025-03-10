@@ -1,0 +1,478 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CV Portfolio</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        /* General Styles */
+        body {
+            font-family: 'Poppins', sans-serif;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            background-color: #e0f7fa; /* Light blue background */
+            color: #333;
+        }
+
+        /* Sidebar Styles */
+        .sidebar {
+            width: 250px;
+            background-color: #c8e6c9; /* Light green sidebar */
+            color: #2e7d32; /* Dark green text */
+            height: 100vh;
+            padding: 20px;
+            box-shadow: 2px 0 10px rgba(0, 0, 0, 0.1);
+        }
+
+        .sidebar h2 {
+            text-align: center;
+            margin-bottom: 20px;
+            font-size: 1.5rem;
+        }
+
+        .sidebar ul {
+            list-style: none;
+            padding: 0;
+        }
+
+        .sidebar ul li {
+            margin: 15px 0;
+        }
+
+        .sidebar ul li a {
+            color: #2e7d32; /* Dark green text */
+            text-decoration: none;
+            font-size: 1rem;
+            display: block;
+            padding: 10px;
+            border-radius: 5px;
+            transition: background-color 0.3s ease;
+        }
+
+        .sidebar ul li a:hover {
+            background-color: #a5d6a7; /* Light green hover */
+        }
+
+        .sidebar ul li a i {
+            margin-right: 10px;
+        }
+
+        /* Sub-Sidebar Styles */
+        .sub-sidebar {
+            display: none; /* Hidden by default */
+            width: 200px;
+            background-color: #a5d6a7; /* Light green sub-sidebar */
+            color: #2e7d32; /* Dark green text */
+            height: 100vh;
+            padding: 20px;
+            box-shadow: 2px 0 10px rgba(0, 0, 0, 0.1);
+        }
+
+        .sub-sidebar.active {
+            display: block; /* Show when active */
+        }
+
+        .sub-sidebar h3 {
+            font-size: 1.25rem;
+            margin-bottom: 20px;
+        }
+
+        .sub-sidebar ul {
+            list-style: none;
+            padding: 0;
+        }
+
+        .sub-sidebar ul li {
+            margin: 10px 0;
+        }
+
+        .sub-sidebar ul li a {
+            color: #2e7d32; /* Dark green text */
+            text-decoration: none;
+            font-size: 0.9rem;
+            display: block;
+            padding: 8px;
+            border-radius: 5px;
+            transition: background-color 0.3s ease;
+        }
+
+        .sub-sidebar ul li a:hover {
+            background-color: #81c784; /* Light green hover */
+        }
+
+        /* Main Content Styles */
+        .main-content {
+            flex: 1;
+            padding: 20px;
+        }
+
+        .section {
+            display: none;
+            background-color: #fff;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .section.active {
+            display: block;
+        }
+
+        .section h2 {
+            font-size: 2rem;
+            margin-bottom: 20px;
+            color: #2c3e50;
+        }
+
+        /* About Me Section */
+        .about-me {
+            text-align: center;
+        }
+
+        .profile-pic {
+            width: 150px;
+            height: 150px;
+            border-radius: 50%;
+            object-fit: cover;
+            margin-bottom: 20px;
+            border: 4px solid #3498db;
+        }
+
+        .about-me p {
+            font-size: 1rem;
+            line-height: 1.6;
+            margin-bottom: 20px;
+        }
+
+        .about-info {
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+            margin-bottom: 20px;
+        }
+
+        .about-info div {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+        }
+
+        .about-info div i {
+            font-size: 1.2rem;
+            color: #3498db;
+        }
+
+        .about-info div span {
+            font-size: 1rem;
+            color: #333;
+        }
+
+        .download-cv {
+            text-align: center;
+        }
+
+        .download-cv button {
+            padding: 0.75rem 1.5rem;
+            background-color: #3498db;
+            color: #fff;
+            border: none;
+            border-radius: 8px;
+            font-size: 1rem;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+        .download-cv button:hover {
+            background-color: #2980b9;
+        }
+
+        /* Portfolio Section */
+        .portfolio-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+        }
+
+        .portfolio-item {
+            background-color: #f8f9fa;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+        }
+
+        .portfolio-item h3 {
+            font-size: 1.25rem;
+            margin-bottom: 10px;
+        }
+
+        .portfolio-item p {
+            font-size: 0.9rem;
+            color: #555;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            body {
+                flex-direction: column;
+            }
+
+            .sidebar,
+            .sub-sidebar {
+                width: 100%;
+                height: auto;
+            }
+
+            .main-content {
+                padding: 10px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+<!-- Sidebar -->
+<div class="sidebar">
+    <h2>CV Portfolio</h2>
+    <ul>
+        <li><a href="#about" class="nav-link active"><i class="fas fa-user"></i>About</a></li>
+        <li>
+            <a href="#portfolio" class="nav-link" id="portfolioLink">
+                <i class="fas fa-briefcase"></i>Portfolio
+                <i class="fas fa-chevron-down" id="portfolioArrow"></i>
+            </a>
+        </li>
+        <li><a href="#resume" class="nav-link"><i class="fas fa-file"></i>Resume</a></li>
+        <li><a href="#blog" class="nav-link"><i class="fas fa-blog"></i>Blog</a></li>
+        <li><a href="#contact" class="nav-link"><i class="fas fa-envelope"></i>Contact</a></li>
+    </ul>
+</div>
+
+<!-- Sub-Sidebar for Update Portfolio -->
+<div class="sub-sidebar" id="updatePortfolioSubSidebar">
+    <h3>Update Portfolio</h3>
+    <ul>
+        <li><a href="#update-name" class="sub-nav-link">Update Name</a></li>
+        <li><a href="#update-bio" class="sub-nav-link">Update Bio</a></li>
+        <li><a href="#update-skills" class="sub-nav-link">Update Skills</a></li>
+        <li><a href="#update-contact" class="sub-nav-link">Update Contact</a></li>
+        <li><a href="#update-experience" class="sub-nav-link">Update Experience</a></li>
+
+
+    </ul>
+</div>
+
+<!-- Main Content -->
+<div class="main-content">
+    <!-- About Section -->
+    <div id="about" class="section active">
+        <div class="about-me">
+            <img src="back.png" alt="Profile Picture" class="profile-pic">
+            <h2 id="aboutName">About Me</h2>
+            <p id="aboutBio">Hello! I'm a passionate web developer with expertise in front-end and back-end technologies. I love building user-friendly and scalable applications.</p>
+            <div class="about-info">
+                <div>
+                    <i class="fas fa-envelope"></i>
+                    <span>adri@gmail</span>
+                </div>
+                <div>
+                    <i class="fas fa-briefcase"></i>
+                    <span>Lead Designer</span>
+                </div>
+                <div>
+                    <i class="fas fa-phone"></i>
+                    <span>01387887287</span>
+                </div>
+            </div>
+            <div class="download-cv">
+                <button>Download CV</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Portfolio Section -->
+    <div id="portfolio" class="section">
+        <h2>Portfolio</h2>
+        <div class="portfolio-grid">
+            <div class="portfolio-item">
+                <h3>Project 1</h3>
+                <p>A responsive e-commerce website built with React and Node.js.</p>
+            </div>
+            <div class="portfolio-item">
+                <h3>Project 2</h3>
+                <p>A portfolio website designed with HTML, CSS, and JavaScript.</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Update Portfolio Sections -->
+    <div id="update-name" class="section">
+        <h2>Update Name</h2>
+        <form id="updateNameForm">
+            <label for="newName">New Name:</label>
+            <input type="text" id="newName" name="newName" placeholder="Enter your new name">
+            <button type="submit">Save</button>
+        </form>
+    </div>
+
+    <div id="update-bio" class="section">
+        <h2>Update Bio</h2>
+        <form id="updateBioForm">
+            <label for="newBio">New Bio:</label>
+            <textarea id="newBio" name="newBio" placeholder="Enter your new bio"></textarea>
+            <button type="submit">Save</button>
+        </form>
+    </div>
+
+    <div id="update-skills" class="section">
+        <h2>Update Skills</h2>
+        <form id="updateSkillsForm">
+            <label for="newSkills">New Skills:</label>
+            <input type="text" id="newSkills" name="newSkills" placeholder="Enter your new skills">
+            <button type="submit">Save</button>
+        </form>
+    </div>
+
+    <div id="update-contact" class="section">
+        <h2>Update Contact</h2>
+        <form id="updateContactForm">
+            <label for="newContact">New Contact:</label>
+            <input type="text" id="newContact" name="newContact" placeholder="Enter your new Contact">
+            <button type="submit">Save</button>
+        </form>
+    </div>
+
+    <div id="update-experience" class="section">
+        <h2>Update Experience</h2>
+        <form id="updateExperienceForm">
+            <label for="newExperience">New Experience:</label>
+            <input type="text" id="newExperience" name="newExperience" placeholder="Enter your new Experience">
+            <button type="submit">Save</button>
+        </form>
+    </div>
+
+    <!-- Resume Section -->
+    <div id="resume" class="section">
+        <h2>Resume</h2>
+        <p>Download my resume: <a href="#" target="_blank">Resume.pdf</a></p>
+    </div>
+
+    <!-- Blog Section -->
+    <div id="blog" class="section">
+        <h2>Blog</h2>
+        <p>Coming soon! Stay tuned for articles on web development and design.</p>
+    </div>
+
+    <!-- Contact Section -->
+    <div id="contact" class="section">
+        <h2>Contact</h2>
+        <p>Email: adri@gmail.com</p>
+        <p>Phone: 01387887287</p>
+    </div>
+</div>
+
+<!-- Font Awesome for Icons -->
+<script src="https://kit.fontawesome.com/a076d05399.js"></script>
+
+<script>
+    // Sidebar Navigation
+    const navLinks = document.querySelectorAll('.nav-link');
+    const sections = document.querySelectorAll('.section');
+    const portfolioLink = document.getElementById('portfolioLink');
+    const portfolioArrow = document.getElementById('portfolioArrow');
+    const updatePortfolioSubSidebar = document.getElementById('updatePortfolioSubSidebar');
+
+    // Toggle Sub-Sidebar
+    portfolioLink.addEventListener('click', (e) => {
+        e.preventDefault(); // Prevent default link behavior
+        updatePortfolioSubSidebar.classList.toggle('active'); // Toggle sub-sidebar visibility
+        portfolioArrow.classList.toggle('fa-chevron-down'); // Toggle arrow icon
+        portfolioArrow.classList.toggle('fa-chevron-up');
+    });
+
+    // Hide Sub-Sidebar when clicking outside
+    document.addEventListener('click', (e) => {
+        if (!e.target.closest('.sidebar') && !e.target.closest('.sub-sidebar')) {
+            updatePortfolioSubSidebar.classList.remove('active');
+            portfolioArrow.classList.remove('fa-chevron-up');
+            portfolioArrow.classList.add('fa-chevron-down');
+        }
+    });
+
+    // Show the corresponding section when a sub-sidebar link is clicked
+    const subNavLinks = document.querySelectorAll('.sub-nav-link');
+    subNavLinks.forEach(link => {
+        link.addEventListener('click', (e) => {
+            e.preventDefault();
+            const target = link.getAttribute('href').substring(1);
+
+            // Hide all sections
+            sections.forEach(section => section.classList.remove('active'));
+
+            // Show the target section
+            document.getElementById(target).classList.add('active');
+        });
+    });
+
+    // Show the corresponding section when a main sidebar link is clicked
+    navLinks.forEach(link => {
+        link.addEventListener('click', (e) => {
+            e.preventDefault();
+            const target = link.getAttribute('href').substring(1);
+
+            // Hide all sections
+            sections.forEach(section => section.classList.remove('active'));
+
+            // Show the target section
+            document.getElementById(target).classList.add('active');
+
+            // Update active link
+            navLinks.forEach(link => link.classList.remove('active'));
+            link.classList.add('active');
+        });
+    });
+
+    // Update Name Form
+    const updateNameForm = document.getElementById('updateNameForm');
+    const aboutName = document.getElementById('aboutName');
+
+    updateNameForm.addEventListener('submit', (e) => {
+        e.preventDefault();
+        const newName = document.getElementById('newName').value;
+        localStorage.setItem('portfolioName', newName); // Save to localStorage
+        aboutName.textContent = newName; // Update About Me section
+        alert('Name updated successfully!');
+    });
+
+    // Update Bio Form
+    const updateBioForm = document.getElementById('updateBioForm');
+    const aboutBio = document.getElementById('aboutBio');
+
+    updateBioForm.addEventListener('submit', (e) => {
+        e.preventDefault();
+        const newBio = document.getElementById('newBio').value;
+        localStorage.setItem('portfolioBio', newBio); // Save to localStorage
+        aboutBio.textContent = newBio; // Update About Me section
+        alert('Bio updated successfully!');
+    });
+
+    // Load saved data on page load
+    const savedName = localStorage.getItem('portfolioName');
+    const savedBio = localStorage.getItem('portfolioBio');
+
+    if (savedName) {
+        aboutName.textContent = savedName;
+    }
+
+    if (savedBio) {
+        aboutBio.textContent = savedBio;
+    }
+</script>
+
+</body>
+</html>

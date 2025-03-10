@@ -1,0 +1,229 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Page 4 - Skills</title>
+    <link
+      href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css"
+      rel="stylesheet"
+    />
+  </head>
+  <body class="flex h-screen">
+    <aside class="bg-gray-800 text-white w-64 p-4">
+      <h1 class="text-2xl font-bold mb-6">Limonify</h1>
+      <nav>
+        <a href="index.html" class="block py-2">Heading</a>
+        <a href="page2.html" class="block py-2">Education</a>
+        <a href="page3.html" class="block py-2">Professional Experience</a>
+        <a href="page4.html" class="block py-2">Skills</a>
+        <a href="page5.html" class="block py-2">Summary</a>
+        <a href="page6.html" class="block py-2">Finalize</a>
+      </nav>
+    </aside>
+
+    <main class="flex-1 p-8">
+      <div class="flex justify-between items-center mb-4">
+        <a href="page3.html" class="text-blue-500">&larr; Go Back</a>
+        <span class="text-blue-500">Tips</span>
+      </div>
+
+      <h2 class="text-2xl font-semibold mb-4">
+        What skills would you like to highlight?
+      </h2>
+      <p class="mb-4">
+        Choose from our pre-written examples below or write your own.
+      </p>
+
+      <form id="skills-form">
+        <div class="mb-4">
+          <label for="job-title" class="block text-sm font-medium text-gray-700"
+            >SELECT JOB TITLE FOR PRE-WRITTEN EXAMPLES</label
+          >
+          <select
+            id="job-title"
+            name="job-title"
+            class="mt-1 p-2 border rounded w-full"
+          >
+            <option value="">Select a job title</option>
+            <option value="salesman">Salesman</option>
+            <option value="cashier">Cashier</option>
+            <option value="customer-service">
+              Customer Service Representative
+            </option>
+            <option value="manager">Manager</option>
+            <option value="retail-sales">Retail Sales Associate</option>
+          </select>
+        </div>
+
+        <div class="mb-4">
+          <p class="font-semibold">
+            Showing examples for <span id="selected-job-title">Salesman</span>
+          </p>
+          <div class="space-y-2">
+            <div
+              class="flex items-center justify-between bg-gray-100 p-2 rounded"
+            >
+              <div>
+                <span class="font-medium">Expert Recommended</span><br />
+                <span>Sales and marketing strategies</span>
+              </div>
+              <button
+                class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-1 px-2 rounded"
+              >
+                +
+              </button>
+            </div>
+            <div
+              class="flex items-center justify-between bg-gray-100 p-2 rounded"
+            >
+              <div>
+                <span class="font-medium">Expert Recommended</span><br />
+                <span>Client presentations</span>
+              </div>
+              <button
+                class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-1 px-2 rounded"
+              >
+                +
+              </button>
+            </div>
+            <div
+              class="flex items-center justify-between bg-gray-100 p-2 rounded"
+            >
+              <div>
+                <span class="font-medium">Expert Recommended</span><br />
+                <span>Lead prospecting</span>
+              </div>
+              <button
+                class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-1 px-2 rounded"
+              >
+                +
+              </button>
+            </div>
+            <div
+              class="flex items-center justify-between bg-gray-100 p-2 rounded"
+            >
+              <div>
+                <span class="font-medium">Expert Recommended</span><br />
+                <span>Territory development</span>
+              </div>
+              <button
+                class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-1 px-2 rounded"
+              >
+                +
+              </button>
+            </div>
+            <div
+              class="flex items-center justify-between bg-gray-100 p-2 rounded"
+            >
+              <div>
+                <span>CRM tracking</span>
+              </div>
+              <button
+                class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-1 px-2 rounded"
+              >
+                +
+              </button>
+            </div>
+            <div
+              class="flex items-center justify-between bg-gray-100 p-2 rounded"
+            >
+              <div>
+                <span>Customer relationship building</span>
+              </div>
+              <button
+                class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-1 px-2 rounded"
+              >
+                +
+              </button>
+            </div>
+            <div
+              class="flex items-center justify-between bg-gray-100 p-2 rounded"
+            >
+              <div>
+                <span>Product maintenance</span>
+              </div>
+              <button
+                class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-1 px-2 rounded"
+              >
+                +
+              </button>
+            </div>
+          </div>
+        </div>
+
+        <div class="grid grid-cols-2 gap-4 mb-4">
+          <div>
+            <label
+              for="skills-editor"
+              class="block text-sm font-medium text-gray-700"
+              >Text Editor</label
+            >
+            <textarea
+              id="skills-editor"
+              name="skills-editor"
+              class="mt-1 p-2 border rounded w-full h-40"
+            >
+Sales and marketing strategies\nTerritory development</textarea
+            >
+            <div class="flex justify-between mt-2">
+              <div class="flex space-x-2">
+                <button
+                  class="bg-gray-200 hover:bg-gray-300 text-gray-700 font-medium py-1 px-2 rounded"
+                >
+                  B
+                </button>
+                <button
+                  class="bg-gray-200 hover:bg-gray-300 text-gray-700 font-medium py-1 px-2 rounded"
+                >
+                  I
+                </button>
+                <button
+                  class="bg-gray-200 hover:bg-gray-300 text-gray-700 font-medium py-1 px-2 rounded"
+                >
+                  U
+                </button>
+              </div>
+              <button
+                class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-1 px-2 rounded"
+              >
+                Update
+              </button>
+            </div>
+          </div>
+          <div>
+            <label
+              for="skills-preview"
+              class="block text-sm font-medium text-gray-700"
+              >Preview</label
+            >
+            <div
+              id="skills-preview"
+              class="mt-1 p-2 border rounded w-full h-40"
+            >
+              Sales and marketing strategies<br />
+              Territory development
+            </div>
+          </div>
+        </div>
+
+        <div class="flex justify-between">
+          <button
+            type="button"
+            class="bg-gray-300 hover:bg-gray-400 text-gray-800 font-bold py-2 px-4 rounded"
+          >
+            Preview
+          </button>
+          <button
+            type="submit"
+            class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded"
+          >
+            Next: Summary
+          </button>
+        </div>
+      </form>
+    </main>
+
+    <script src="/Scripts/script4.js"></script>
+  </body>
+</html>

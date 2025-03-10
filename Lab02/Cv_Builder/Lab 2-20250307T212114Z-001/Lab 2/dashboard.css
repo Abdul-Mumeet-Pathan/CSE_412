@@ -1,0 +1,153 @@
+body {
+    font-family: 'Arial', sans-serif;
+    margin: 0;
+    padding: 0;
+    text-align: center;
+    background: #f4f4f4;
+    color: #333;
+}
+
+/* Header */
+header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 15px 5%;
+    background: #fff;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+}
+
+.logo img {
+    height: 45px;
+    margin-left: 50PX;
+}
+
+nav {
+    display: flex;
+    align-items: center;
+}
+
+nav ul {
+    list-style: none;
+    display: flex;
+    padding: 0;
+    margin: 0;
+    align-items: center;
+}
+
+nav ul li {
+    margin-left: 50px;
+}
+
+nav ul li a {
+    text-decoration: none;
+    color: #333;
+    font-size: 16px;
+    line-height: 40px; /* Aligning with account button */
+    transition: color 0.3s ease;
+}
+
+nav ul li a:hover {
+    color: #FFA500;
+}
+
+.logout-btn {
+    width: 100px;
+    background: #0A1F66;
+    color: white;
+    padding: 10px 15px;
+    border: none;
+    border-radius: 20px;
+    font-size: 14px;
+    cursor: pointer;
+    line-height: 40px; /* Aligning with navigation items */
+    transition: background 0.3s ease;
+}
+
+.logout-btn:hover {
+    background: #FFA500;
+}
+
+.content {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 50px;
+}
+
+.text-section {
+    width: 50%;
+    text-align: left;
+}
+
+.text-section h1 {
+    font-size: 2.5em;
+    font-weight: bold;
+}
+
+.steps {
+    margin-top: 20px;
+}
+
+.step {
+    display: flex;
+    align-items: center;
+    margin-bottom: 15px;
+}
+
+.step span {
+    display: inline-block;
+    width: 30px;
+    height: 30px;
+    background: #dbe4f3;
+    color: #000;
+    font-weight: bold;
+    border-radius: 50%;
+    text-align: center;
+    line-height: 30px;
+    margin-right: 10px;
+}
+
+.buttons {
+    margin-top: 30px;
+}
+
+button {
+    background-color: #007bff;
+    color: white;
+    padding: 12px 20px;
+    border: none;
+    cursor: pointer;
+    font-size: 16px;
+    margin: 10px;
+    border-radius: 5px;
+}
+
+button:hover {
+    background-color: #0056b3;
+}
+
+.image-section {
+    width: 45%;
+}
+
+.image-section img {
+    width: 100%;
+    max-height: 500px;
+}
+
+footer {
+    margin-top: 30px;
+    font-size: 14px;
+    color: #555;
+}
+
+footer a {
+    text-decoration: none;
+    color: #555;
+    margin: 0 10px;
+}
+
+footer a:hover {
+    color: #007bff;
+}
