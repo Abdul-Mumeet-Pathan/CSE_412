@@ -3,11 +3,46 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-    <link rel="stylesheet" href="exp.css">
-
+    <title>Select Your CV Template</title>
+    <link rel="stylesheet" href="template.css">
 </head>
 <body>
-    
+    <div class="container">
+        <header>
+            <h1>Choose Your CV Template</h1>
+        </header>
+        <main>
+            <div class="template-options">
+                <div class="template-card" onclick="selectTemplate('template1')">
+                    <img src="template1-preview.jpg" alt="Template 1">
+                    <p>Modern Template</p>
+                </div>
+                <div class="template-card" onclick="selectTemplate('template2')">
+                    <img src="template2-preview.jpg" alt="Template 2">
+                    <p>Professional Template</p>
+                </div>
+                <div class="template-card" onclick="selectTemplate('template3')">
+                    <img src="template3-preview.jpg" alt="Template 3">
+                    <p>Minimalist Template</p>
+                </div>
+            </div>
+            <button id="nextBtn" disabled onclick="goToFormPage()">Next</button>
+        </main>
+    </div>
+    <script>
+        let selectedTemplate = "";
+        
+        function selectTemplate(template) {
+            selectedTemplate = template;
+            document.getElementById("nextBtn").disabled = false;
+        }
+        
+        function goToFormPage() {
+            if (selectedTemplate) {
+                localStorage.setItem("selectedTemplate", selectedTemplate);
+                window.location.href = "form.html";
+            }
+        }
+    </script>
 </body>
 </html>
