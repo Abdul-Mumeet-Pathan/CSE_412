@@ -97,16 +97,49 @@ app.post('/update-user', async (req, res) => {
   }
 });
 
-// ✅ API to retrieve all stored user data
-app.get('/get-contacts', async (req, res) => {
+// ✅ API to retrieve user data by email
+app.post('/get-user-data', async (req, res) => {
   try {
-    const contacts = await contactsCollection.find({}).toArray();
-    res.json(contacts);
+    const { email } = req.body;
+
+    if (!email) {
+      return res.status(400).json({ message: "Email is required." });
+    }
+
+    // Retrieve user data from the database using the email
+    const user = await contactsCollection.findOne({ email });
+
+    if (!user) {
+      return res.status(404).json({ message: "User not found." });
+    }
+
+    // Send the user's data with all fields from the JSON structure
+    res.status(200).json({
+      data: {
+        name: user.name || '',
+        surname: user.surname || '',
+        profession: user.profession || '',
+        city: user.city || '',
+        postcode: user.postcode || '',
+        division: user.division || '',
+        phone: user.phone || '',
+        email: user.email || '',
+        additionalCoursework: user.additionalCoursework || '',
+        degree: user.degree || '',
+        fieldOfStudy: user.fieldOfStudy || '',
+        graduationMonth: user.graduationMonth || '',
+        graduationYear: user.graduationYear || '',
+        institution: user.institution || '',
+        institutionLocation: user.institutionLocation || '',
+        experience: user.experience || {},
+        skill: user.skill || {}
+      }
+    });
   } catch (error) {
-    res.status(500).json({ message: 'Error retrieving data', error: error.message });
+    console.error('Error fetching user data:', error);
+    res.status(500).json({ message: 'Error fetching user data', error: error.message });
   }
 });
-
 // Connect to MongoDB and start the server
 connectToMongoDB().then(() => {
   app.listen(PORT, () => {
