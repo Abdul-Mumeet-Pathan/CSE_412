@@ -61,9 +61,10 @@ input {
 
 .error {
     color: red;
-    font-size: 12px;
-    display: none;
-    margin-top: 5px;
+    text-align: left;
+    font-size: 14px;
+    display: block;
+
 }
 .error.show {
     display: block;
@@ -76,6 +77,7 @@ input {
     font-weight: bold;
     border: none;
     padding: 10px;
+    margin-top: 5px;
     font-size: 16px;
     cursor: pointer;
     border-radius: 5px;

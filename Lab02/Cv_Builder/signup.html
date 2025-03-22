@@ -44,90 +44,115 @@
     </div>
 
     <script>
-        document.addEventListener("DOMContentLoaded", function() {
-            const signupForm = document.getElementById("signupForm");
-            const fullName = document.getElementById("fullName");
-            const email = document.getElementById("email");
-            const password = document.getElementById("password");
-            const confirmPassword = document.getElementById("confirmPassword");
+        document.addEventListener("DOMContentLoaded", function () {
+    const signupForm = document.getElementById("signupForm");
+    const fullName = document.getElementById("fullName");
+    const email = document.getElementById("email");
+    const password = document.getElementById("password");
+    const confirmPassword = document.getElementById("confirmPassword");
 
-            const nameError = document.getElementById("nameError");
-            const emailError = document.getElementById("emailError");
-            const passwordError = document.getElementById("passwordError");
-            const confirmPasswordError = document.getElementById("confirmPasswordError");
-            const signInBtn = document.getElementById("signInBtn");
+    const nameError = document.getElementById("nameError");
+    const emailError = document.getElementById("emailError");
+    const passwordError = document.getElementById("passwordError");
+    const confirmPasswordError = document.getElementById("confirmPasswordError");
+    const signInBtn = document.getElementById("signInBtn");
 
-            // Redirect to Login Page
-            signInBtn.addEventListener("click", function() {
-                window.location.href = "login.html";
-            });
+    // Redirect to Login Page
+    signInBtn.addEventListener("click", function () {
+        window.location.href = "login.html";
+    });
 
-            function validateInputs() {
-                let isValid = true;
+    function validateInputs() {
+        let isValid = true;
 
-                // Validate full name (at least two words with a space and at least 10 characters)
-                const namePattern = /^[A-Za-z]+(?:\s[A-Za-z]+)+$/;
-                if (!namePattern.test(fullName.value) || fullName.value.length < 10) {
-                    nameError.textContent = "Enter at least two words with a space & 10+ characters.";
-                    fullName.style.borderColor = "red";
-                    isValid = false;
-                } else {
-                    nameError.textContent = "";
-                    fullName.style.borderColor = "";
-                }
+        // Validate full name (at least two words with a space and at least 10 characters)
+        const namePattern = /^[A-Za-z]+(?:\s[A-Za-z]+)+$/;
+        if (!namePattern.test(fullName.value) || fullName.value.length < 10) {
+            nameError.textContent = "Enter at least two words with a space & 10+ characters.";
+            fullName.style.borderColor = "red";
+            isValid = false;
+        } else {
+            nameError.textContent = "";
+            fullName.style.borderColor = "";
+        }
 
-                // Validate email
-                const emailPattern = /^[a-zA-Z0-9._%+-]{3,}@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
-                if (!emailPattern.test(email.value)) {
-                    emailError.textContent = "Enter a valid email (e.g., user@example.com).";
-                    email.style.borderColor = "red";
-                    isValid = false;
-                } else {
-                    emailError.textContent = "";
-                    email.style.borderColor = "";
-                }
+        // Validate email
+        const emailPattern = /^[a-zA-Z0-9._%+-]{3,}@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
+        if (!emailPattern.test(email.value)) {
+            emailError.textContent = "Enter a valid email (e.g., user@example.com).";
+            email.style.borderColor = "red";
+            isValid = false;
+        } else {
+            emailError.textContent = "";
+            email.style.borderColor = "";
+        }
 
-                // Validate password (6-16 characters)
-                if (password.value.length < 6 || password.value.length > 16) {
-                    passwordError.textContent = "Password must be between 6-16 characters.";
-                    password.style.borderColor = "red";
-                    isValid = false;
-                } else {
-                    passwordError.textContent = "";
-                    password.style.borderColor = "";
-                }
+        // Validate password (6-16 characters)
+        if (password.value.length < 6 || password.value.length > 16) {
+            passwordError.textContent = "Password must be between 6-16 characters.";
+            password.style.borderColor = "red";
+            isValid = false;
+        } else {
+            passwordError.textContent = "";
+            password.style.borderColor = "";
+        }
 
-                // Validate confirm password (must match password)
-                if (password.value !== confirmPassword.value) {
-                    confirmPasswordError.textContent = "Passwords do not match.";
-                    confirmPassword.style.borderColor = "red";
-                    isValid = false;
-                } else {
-                    confirmPasswordError.textContent = "";
-                    confirmPassword.style.borderColor = "";
-                }
+        // Validate confirm password (must match password)
+        if (password.value !== confirmPassword.value) {
+            confirmPasswordError.textContent = "Passwords do not match.";
+            confirmPassword.style.borderColor = "red";
+            isValid = false;
+        } else {
+            confirmPasswordError.textContent = "";
+            confirmPassword.style.borderColor = "";
+        }
 
-                return isValid;
-            }
-
-            // Prevent Enter key from submitting the form
-            signupForm.addEventListener("keydown", function(event) {
-                if (event.key === "Enter") {
-                    event.preventDefault();
-                }
-            });
-
-            // Handle form submission
-            signupForm.addEventListener("submit", function(event) {
-    event.preventDefault(); // Prevent default form submission
-    if (validateInputs()) {
-        setTimeout(() => {
-            window.location.href = "login.html";
-        }, 10); // Redirect after 1 second to ensure alert shows
+        return isValid;
     }
+
+    // Prevent Enter key from submitting the form
+    signupForm.addEventListener("keydown", function (event) {
+        if (event.key === "Enter") {
+            event.preventDefault();
+        }
+    });
+
+    // Handle form submission
+    signupForm.addEventListener("submit", async function (event) {
+        event.preventDefault(); // Prevent default form submission
+
+        if (validateInputs()) {
+            const signupData = {
+                fullName: fullName.value,
+                email: email.value,
+                password: password.value
+            };
+
+            try {
+                const response = await fetch("http://localhost:5000/signup", {
+                    method: "POST",
+                    headers: { "Content-Type": "application/json" },
+                    body: JSON.stringify(signupData)
+                });
+
+                const result = await response.json();
+
+                if (response.ok) {
+                    alert("Signup successful! Redirecting to login...");
+                    setTimeout(() => {
+                        window.location.href = "login.html";
+                    }, 1000);
+                } else {
+                    alert("Error: " + result.message);
+                }
+            } catch (error) {
+                console.error("Error:", error);
+                alert("Failed to connect to the server.");
+            }
+        }
+    });
 });
 
-        });
     </script>
 </body>
 </html>

@@ -68,10 +68,10 @@
 });
 
 
-    // CTA Button Click Alert
-    document.querySelector(".cta").addEventListener("click", function () {
-        alert("Let's start building your professional resume!");
-    });
+    // CTA Button Click Redirect
+document.querySelector(".cta").addEventListener("click", function () {
+    window.location.href = "dashboard.html"; // Redirect to dashboard.html
+});
 
     // Feature Section Hover Effect
     document.querySelectorAll(".feature").forEach(feature => {

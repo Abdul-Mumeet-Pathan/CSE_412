@@ -1,165 +1,243 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Page 5 - Summary</title>
-    <link
-      href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css"
-      rel="stylesheet"
-    />
-    <style>
-      @media print {
-        aside, footer, .no-print {
-          display: none;
-        }
-        body {
-          padding: 0;
-          margin: 0;
-        }
-        .print-container {
-          width: 100%;
-          box-shadow: none;
-        }
-        main {
-          padding: 0;
-        }
-      }
-    </style>
-  </head>
-  <body class="flex flex-col min-h-screen">
-    <div class="flex flex-1">
-      <!-- Sidebar -->
-      <aside class="bg-gray-800 text-white w-64 p-4">
-        <h1 class="text-2xl font-bold mb-6">Limonify</h1>
-        <nav aria-label="Main Navigation">
-          <a href="index.html" class="block py-2">Heading</a>
-          <a href="page2.html" class="block py-2">Education</a>
-          <a href="page3.html" class="block py-2">Professional Experience</a>
-          <a href="page4.html" class="block py-2">Skills</a>
-          <a href="page5.html" class="block py-2 text-blue-500">Summary</a> <!-- Active Link for Summary -->
-          <a href="page6.html" class="block py-2">Finalize</a>
-        </nav>
-      </aside>
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Portfolio Summary</title>
+  <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet" />
+  <style>
+    @media print {
+      aside, footer, .no-print { display: none; }
+      body { padding: 0; margin: 0; }
+      .print-container { width: 100%; box-shadow: none; }
+      main { padding: 0; }
+    }
 
-      <!-- Main Content -->
-      <main class="flex-1 p-8">
-        <div class="flex justify-between items-center mb-4 no-print">
-          <a href="page4.html" class="text-blue-500">&larr; Go Back</a>
-          <span class="text-blue-500">Tips</span>
+    /* Navbar CSS */
+    header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 15px 5%;
+      background: #fff;
+      box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    }
+
+    .logo img {
+      height: 45px;
+      margin-left: 50px;
+    }
+
+    nav {
+      display: flex;
+      align-items: center;
+    }
+
+    nav ul {
+      list-style: none;
+      display: flex;
+      padding: 0;
+      margin: 0;
+      align-items: center;
+    }
+
+    nav ul li {
+      margin-left: 50px;
+    }
+
+    nav ul li a {
+      text-decoration: none;
+      color: #333;
+      font-size: 16px;
+      line-height: 40px; /* Aligning with account button */
+      transition: color 0.3s ease;
+    }
+
+    nav ul li a:hover {
+      color: #ffa500;
+    }
+
+    .logout-btn {
+      width: 100px;
+      background: #0a1f66;
+      color: white;
+      padding: 10px 15px;
+      border: none;
+      border-radius: 20px;
+      font-size: 14px;
+      cursor: pointer;
+      line-height: 40px; /* Aligning with navigation items */
+      transition: background 0.3s ease;
+    }
+
+    .logout-btn:hover {
+      background: #ffa500;
+    }
+
+    /* Sidebar CSS */
+    aside {
+      display: flex;
+      flex-direction: column;
+    }
+
+    aside nav {
+      display: flex;
+      flex-direction: column;
+    }
+
+    aside nav a {
+      display: block;
+      padding: 10px;
+      color: white;
+      text-decoration: none;
+      transition: background 0.3s ease;
+    }
+
+    aside nav a:hover {
+      background: #4a5568;
+    }
+
+    /* Custom CSS for Portfolio Content */
+    .portfolio-section {
+      margin-bottom: 2rem;
+      padding: 1.5rem;
+      border-radius: 8px;
+      background-color: #ffffff;
+      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    }
+
+    .portfolio-section h1 {
+      color: #1e293b; /* Dark gray */
+      font-size: 1.5rem;
+      font-weight: bold;
+      margin-bottom: 1rem;
+      border-bottom: 2px solid #e2e8f0; /* Light gray */
+      padding-bottom: 0.5rem;
+    }
+
+    .portfolio-section p {
+      color: #4a5568; /* Medium gray */
+      margin-bottom: 0.5rem;
+    }
+
+    .portfolio-section p strong {
+      color: #1e293b; /* Dark gray */
+    }
+
+    .skills-container div {
+      margin-bottom: 1rem;
+      padding: 1rem;
+      background-color: #f7fafc; /* Light blue-gray */
+      border-radius: 6px;
+      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+    }
+
+    .skills-container p {
+      margin: 0;
+    }
+
+    .skills-container p.font-medium {
+      color: #1e293b; /* Dark gray */
+    }
+
+    .skills-container p.text-gray-600 {
+      color: #4a5568; /* Medium gray */
+    }
+
+    /* Button Styles */
+    .choose-template-btn {
+      background-color: #10b981; /* Green */
+      color: white;
+      font-weight: bold;
+      padding: 0.75rem 1.5rem;
+      border-radius: 8px;
+      transition: background-color 0.3s ease;
+    }
+
+    .choose-template-btn:hover {
+      background-color: #059669; /* Darker green */
+    }
+  </style>
+</head>
+<body class="flex flex-col h-screen">
+  <header class="bg-white shadow-md p-4 flex justify-between">
+    <div class="logo"><img src="logo.png" alt="Logo" /></div>
+    <nav>
+      <ul class="flex space-x-6">
+        <li><a href="#">Home</a></li>
+        <li><a href="#">My Portfolios</a></li>
+        <li><a href="dc.html">Account</a></li>
+        <li><button class="logout-btn bg-blue-700 text-white px-4 py-2 rounded">Logout</button></li>
+      </ul>
+    </nav>
+  </header>
+  
+  <div class="flex flex-1">
+    <aside class="bg-gray-800 text-white w-64 p-4">
+      <nav>
+        <a href="index.html" class="block py-2">Personal Information</a>
+        <a href="page2.html" class="block py-2">Education</a>
+        <a href="page3.html" class="block py-2">Professional Experience</a>
+        <a href="page4.html" class="block py-2">Skills</a>
+        <a href="page5.html" class="block py-2">Summary</a>
+        <a href="template-selection.html" class="block py-2">Choose Template</a>
+      </nav>
+    </aside>
+    
+    <main class="flex-1 p-8">
+      <div id="portfolio-container" class="p-8 print-container">
+        <!-- Personal Information -->
+        <div class="portfolio-section">
+          <h1>Personal Information</h1>
+          <p><strong>Full Name:</strong> <span id="summary-fullname">N/A</span></p>
+          <p><strong>Profession:</strong> <span id="summary-profession">N/A</span></p>
+          <p><strong>Email:</strong> <span id="summary-email">N/A</span></p>
+          <p><strong>Phone:</strong> <span id="summary-phone">N/A</span></p>
+          <p><strong>Location:</strong> <span id="summary-location">N/A</span></p>
+          <p><strong>Postcode:</strong> <span id="summary-postcode">N/A</span></p>
         </div>
 
-        <h2 class="text-2xl font-semibold mb-4 no-print">Portfolio Summary</h2>
-        <p class="mb-4 no-print">
-          Here's a comprehensive summary of your portfolio. Please review all details carefully and make any necessary changes before finalizing.
-        </p>
+        <!-- Education -->
+        <div class="portfolio-section">
+          <h1>Education</h1>
+          <p><strong>Institution:</strong> <span id="summary-institution">N/A</span></p>
+          <p><strong>Degree:</strong> <span id="summary-degree-field">N/A</span></p>
+          <p><strong>Graduation Date:</strong> <span id="summary-graduation-date">N/A</span></p>
+          <p><strong>Institution Location:</strong> <span id="summary-institution-location">N/A</span></p>
+          <p><strong>Additional Coursework:</strong> <span id="summary-coursework">N/A</span></p>
+        </div>
 
-        <!-- Print Button -->
-        <button 
-          onclick="window.print()" 
-          class="mb-4 bg-green-500 hover:bg-green-700 text-white font-bold py-2 px-4 rounded flex items-center no-print">
-          <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 mr-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 17h2a2 2 0 002-2v-4a2 2 0 00-2-2H5a2 2 0 00-2 2v4a2 2 0 002 2h2m2 4h6a2 2 0 002-2v-4a2 2 0 00-2-2H9a2 2 0 00-2 2v4a2 2 0 002 2zm0 0V9a2 2 0 012-2h6a2 2 0 012 2v9m-6 0a2 2 0 002 2h0a2 2 0 002-2" />
-          </svg>
-          Print Portfolio
+        <!-- Professional Experience -->
+        <div class="portfolio-section">
+          <h1>Professional Experience</h1>
+          <p><strong>Job Title:</strong> <span id="summary-job-title">N/A</span></p>
+          <p><strong>Company:</strong> <span id="summary-company">N/A</span></p>
+          <p><strong>Job Location:</strong> <span id="summary-job-location">N/A</span></p>
+          <p><strong>Employment Dates:</strong> <span id="summary-job-dates">N/A</span></p>
+          <p><strong>Remote Status:</strong> <span id="summary-remote-status">N/A</span></p>
+          <p><strong>Current Work Status:</strong> <span id="summary-current-work">N/A</span></p>
+        </div>
+
+        <!-- Skills -->
+        <div class="portfolio-section">
+          <h1>Skills</h1>
+          <div id="skills-container" class="skills-container">
+            <p>No skills data available.</p>
+          </div>
+        </div>
+      </div>
+      <div class="flex justify-end no-print">
+        <button onclick="window.location.href='template-selection.html'" class="choose-template-btn">
+          Choose Template
         </button>
+      </div>
+    </main>
+  </div>
+  
+  <footer class="bg-gray-200 p-4 text-center">
+    <p>&copy; 2023 Your Website</p>
+  </footer>
 
-        <!-- Portfolio Summary Section -->
-        <div class="bg-white shadow-lg rounded-lg overflow-hidden mb-8 print-container">
-          <!-- Header/Personal Info Section -->
-          <div class="bg-blue-500 text-white p-6">
-            <h3 class="text-2xl font-bold mb-1" id="summary-fullname"></h3>
-            <p class="text-lg" id="summary-profession"></p>
-          </div>
-          
-          <!-- Contact Information -->
-          <div class="p-6 border-b">
-            <h4 class="text-lg font-semibold mb-3">Contact Information</h4>
-            <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
-              <div>
-                <p class="text-gray-600">Email</p>
-                <p id="summary-email" class="font-medium"></p>
-              </div>
-              <div>
-                <p class="text-gray-600">Phone</p>
-                <p id="summary-phone" class="font-medium"></p>
-              </div>
-              <div>
-                <p class="text-gray-600">Location</p>
-                <p id="summary-location" class="font-medium"></p>
-              </div>
-              <div>
-                <p class="text-gray-600">Postal Code</p>
-                <p id="summary-postcode" class="font-medium"></p>
-              </div>
-            </div>
-          </div>
-          
-          <!-- Education Section -->
-          <div class="p-6 border-b">
-            <h4 class="text-lg font-semibold mb-3">Education</h4>
-            <div class="mb-4">
-              <div class="flex justify-between">
-                <p class="font-medium" id="summary-institution"></p>
-                <p class="text-gray-600" id="summary-graduation-date"></p>
-              </div>
-              <p id="summary-degree-field"></p>
-              <p class="text-gray-600" id="summary-institution-location"></p>
-              <div class="mt-2">
-                <p class="text-gray-600">Additional Coursework:</p>
-                <p id="summary-coursework"></p>
-              </div>
-            </div>
-          </div>
-          
-          <!-- Professional Experience Section -->
-          <div class="p-6 border-b">
-            <h4 class="text-lg font-semibold mb-3">Professional Experience</h4>
-            <div class="mb-4">
-              <div class="flex justify-between">
-                <p class="font-medium" id="summary-job-title"></p>
-                <p class="text-gray-600" id="summary-job-dates"></p>
-              </div>
-              <p id="summary-company"></p>
-              <p class="text-gray-600" id="summary-job-location"></p>
-              <p id="summary-remote-status" class="mt-1 text-blue-600"></p>
-              <p id="summary-current-work" class="mt-1 text-green-600"></p>
-            </div>
-          </div>
-          
-          <!-- Skills Section -->
-          <div class="p-6">
-            <h4 class="text-lg font-semibold mb-3">Skills</h4>
-            <div class="mb-2">
-              <p class="font-medium" id="summary-skill-name"></p>
-              <p class="text-gray-600" id="summary-skill-description"></p>
-            </div>
-          </div>
-        </div>
-
-        <!-- Button Section -->
-        <div class="flex justify-between no-print">
-          <button
-            type="button"
-            class="bg-gray-300 hover:bg-gray-400 text-gray-800 font-bold py-2 px-4 rounded"
-            onclick="window.location.href='page4.html'">
-            Back
-          </button>
-          <button
-            type="submit"
-            class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded"
-            onclick="window.location.href='page6.html'">
-            Finalize
-          </button>
-        </div>
-      </main>
-    </div>
-
-    <!-- Footer -->
-    <footer class="bg-gray-200 p-4 text-center">
-      <p>&copy; 2023 Your Website</p>
-    </footer>
-
-    <script src="Scripts/script5.js"></script>
-  </body>
+  <script src="/Scripts/script5.js"></script>
+</body>
 </html>

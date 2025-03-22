@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Choose a Template</title>
+  <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+  <style>
+    .template-card {
+      border: 1px solid #e2e8f0;
+      border-radius: 8px;
+      transition: transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
+    }
+    .template-card:hover {
+      transform: scale(1.05);
+      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    }
+
+    /* Template 1: Clean and Minimal */
+    .template1 { background-color: #f3f4f6; color: #111827; }
+
+    /* Template 2: Two-Column Layout with Soft Backgrounds */
+    .template2 {
+      background-color: #ffffff;
+      color: #1e293b;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 20px;
+      padding: 20px;
+    }
+    .template2 .section {
+      padding: 15px;
+      border-radius: 8px;
+      background-color: #f8fafc; /* Soft gray background */
+      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    }
+    .template2 .section:nth-child(odd) {
+      background-color: #e2e8f0; /* Alternate soft blue background */
+    }
+
+    /* Template 3: Creative and Bold with Gradient Backgrounds */
+    .template3 {
+      background-color: #ffffff;
+      color: #1e293b;
+      padding: 20px;
+    }
+    .template3 .header {
+      background: linear-gradient(to right, #6b46c1, #805ad5); /* Purple gradient */
+      padding: 20px;
+      color: white;
+      text-align: center;
+      border-radius: 8px;
+      margin-bottom: 20px;
+    }
+    .template3 .section {
+      padding: 15px;
+      border-radius: 8px;
+      margin-bottom: 15px;
+      background-color: #f8fafc; /* Soft gray background */
+      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    }
+    .template3 .section:nth-child(even) {
+      background: linear-gradient(to right, #f6e05e, #faf089); /* Yellow gradient */
+    }
+    .template3 .section:nth-child(odd) {
+      background: linear-gradient(to right, #63b3ed, #90cdf4); /* Blue gradient */
+    }
+
+    /* Preview Section */
+    .preview-section {
+      display: none;
+      margin-left: 20px;
+      padding: 20px;
+      border: 1px solid #e2e8f0;
+      border-radius: 8px;
+      background-color: #ffffff;
+      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    }
+  </style>
+</head>
+<body class="bg-gray-100">
+  <div class="container mx-auto p-8">
+    <h1 class="text-3xl font-bold text-center mb-8">Choose a Template</h1>
+    <div class="flex">
+      <!-- Template Selection Grid -->
+      <div class="w-1/3">
+        <div class="grid grid-cols-1 gap-8">
+          <div class="template-card bg-white p-6 text-center cursor-pointer" onclick="showPreview('template1')">
+            <h2 class="text-xl font-semibold mb-4">Template 1</h2>
+            <p class="text-gray-600">Clean and Minimal Design</p>
+          </div>
+          <div class="template-card bg-white p-6 text-center cursor-pointer" onclick="showPreview('template2')">
+            <h2 class="text-xl font-semibold mb-4">Template 2</h2>
+            <p class="text-gray-600">Modern and Professional</p>
+          </div>
+          <div class="template-card bg-white p-6 text-center cursor-pointer" onclick="showPreview('template3')">
+            <h2 class="text-xl font-semibold mb-4">Template 3</h2>
+            <p class="text-gray-600">Creative and Bold</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Preview Section -->
+      <div id="previewSection" class="w-2/3 preview-section">
+        <h2 class="text-xl font-semibold mb-4">Template Preview</h2>
+        <div id="previewContent"></div>
+        <div class="flex justify-end mt-4">
+          <button onclick="printPortfolio()" class="bg-blue-500 text-white px-4 py-2 rounded">Print Portfolio</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Hidden printable portfolio -->
+  <div id="printable-portfolio" class="hidden"></div>
+
+  <script src="/Scripts/template.js"></script>
+</body>
+</html>
