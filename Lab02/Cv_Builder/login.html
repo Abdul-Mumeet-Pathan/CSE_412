@@ -32,59 +32,83 @@
         </div>
     </div>
     <script>
-        document.addEventListener("DOMContentLoaded", function() {
-            const emailInput = document.getElementById("email");
-            const passwordInput = document.getElementById("password");
-            const emailError = document.getElementById("emailError");
-            const passwordError = document.getElementById("passwordError");
-            const signInBtn = document.getElementById("signInBtn");
+        document.addEventListener("DOMContentLoaded", function () {
+    const emailInput = document.getElementById("email");
+    const passwordInput = document.getElementById("password");
+    const emailError = document.getElementById("emailError");
+    const passwordError = document.getElementById("passwordError");
+    const signInBtn = document.getElementById("signInBtn");
+    const signUpBtn = document.getElementById("signUpBtn");
 
-            function validateInputs() {
-                let isValid = true;
+    function validateInputs() {
+        let isValid = true;
 
-                // Validate email (at least 3 characters before @ and ends with .something)
-                const emailPattern = /^[a-zA-Z0-9._%+-]{3,}@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
-                if (!emailPattern.test(emailInput.value)) {
-                    emailError.textContent = "Please enter a valid email (at least 3 characters before @ and ending with .something)";
-                    emailInput.style.borderColor = "red";
-                    isValid = false;
-                } else {
-                    emailError.textContent = "";
-                    emailInput.style.borderColor = "";
-                }
+        // Validate email format
+        const emailPattern = /^[a-zA-Z0-9._%+-]{3,}@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
+        if (!emailPattern.test(emailInput.value)) {
+            emailError.textContent = "Enter a valid email (e.g., user@example.com)";
+            emailError.style.display = "block";
+            emailInput.style.borderColor = "red";
+            isValid = false;
+        } else {
+            emailError.textContent = "";
+            emailError.style.display = "none";
+            emailInput.style.borderColor = "";
+        }
 
-                // Validate password (6-16 characters)
-                if (passwordInput.value.length < 6 || passwordInput.value.length > 16) {
-                    passwordError.textContent = "Password must be between 6-16 characters";
-                    passwordInput.style.borderColor = "red";
-                    isValid = false;
-                } else {
-                    passwordError.textContent = "";
-                    passwordInput.style.borderColor = "";
-                }
+        // Validate password length (6-16 characters)
+        if (passwordInput.value.length < 6 || passwordInput.value.length > 16) {
+            passwordError.textContent = "Password must be between 6-16 characters";
+            passwordError.style.display = "block";
+            passwordInput.style.borderColor = "red";
+            isValid = false;
+        } else {
+            passwordError.textContent = "";
+            passwordError.style.display = "none";
+            passwordInput.style.borderColor = "";
+        }
 
-                return isValid;
+        return isValid;
+    }
+
+    // Handle form submission
+    signInBtn.addEventListener("click", async function () {
+        if (!validateInputs()) return;
+
+        const loginData = {
+            email: emailInput.value,
+            password: passwordInput.value
+        };
+
+        try {
+            const response = await fetch("http://localhost:5000/login", {
+                method: "POST",
+                headers: { "Content-Type": "application/json" },
+                body: JSON.stringify(loginData)
+            });
+
+            const result = await response.json();
+
+            if (response.ok) {
+                alert("Login successful! Redirecting to dashboard...");
+                setTimeout(() => {
+                    window.location.href = "dashboard.html";
+                }, 1000);
+            } else {
+                alert(result.message);
             }
+        } catch (error) {
+            console.error("Error:", error);
+            alert("Failed to connect to the server.");
+        }
+    });
 
-            // Prevent Enter key from submitting the form
-            document.getElementById("loginForm").addEventListener("keydown", function(event) {
-                if (event.key === "Enter") {
-                    event.preventDefault();
-                    validateInputs();
-                }
-            });
+    // Redirect to Sign Up page
+    signUpBtn.addEventListener("click", function () {
+        window.location.href = "signup.html";
+    });
+});
 
-            // Handle Sign In button click
-            signInBtn.addEventListener("click", function() {
-                if (validateInputs()) {
-                    window.location.href = "dashboard.html"; // Redirect on success
-                }
-            });
-
-            signUpBtn.addEventListener("click", function() {
-                    window.location.href = "signup.html"; // Redirect on success
-            });
-        });
     </script>
 </body>
 </html>
