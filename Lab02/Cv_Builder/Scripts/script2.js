@@ -12,6 +12,11 @@ document.getElementById('education-form').addEventListener('submit', async funct
         additionalCoursework: document.getElementById('additional-coursework').value
     };
 
+    if (!educationData.institution || !educationData.degree || !educationData.fieldOfStudy || !educationData.graduationMonth || !educationData.graduationYear) {
+        alert('Please fill in all required fields.');
+        return;
+    }
+
     // Fetch email from localStorage (set in previous form)
     const email = localStorage.getItem('userEmail');
     if (!email) {
