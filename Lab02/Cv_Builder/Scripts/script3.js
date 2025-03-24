@@ -25,8 +25,25 @@ document.getElementById('experience-form').addEventListener('submit', async func
 
     // Basic validation (check if required fields are filled)
     if (title === '') {
-        alert('Please fill in all required fields.');
+        alert('Please fill in the job title (required field).');
         return;
+    }
+
+    // Date validation - only check if not current work
+    if (!currentWork) {
+        // Convert dates to comparable format (YYYYMM)
+        const startDate = parseInt(startYear + String(monthToNumber(startMonth)).padStart(2, '0'));
+        const endDate = parseInt(endYear + String(monthToNumber(endMonth)).padStart(2, '0'));
+        
+        if (startDate > endDate) {
+            alert('Start date cannot be after end date.');
+            return;
+        }
+        
+        if (startDate === endDate) {
+            alert('Start date and end date cannot be the same.');
+            return;
+        }
     }
 
     // Store the data in localStorage
@@ -70,3 +87,13 @@ document.getElementById('experience-form').addEventListener('submit', async func
         alert('Failed to update experience details.');
     }
 });
+
+// Helper function to convert month name to number (1-12)
+function monthToNumber(monthName) {
+    const months = {
+        'January': 1, 'February': 2, 'March': 3, 'April': 4,
+        'May': 5, 'June': 6, 'July': 7, 'August': 8,
+        'September': 9, 'October': 10, 'November': 11, 'December': 12
+    };
+    return months[monthName] || 0;
+}
