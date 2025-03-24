@@ -1,4 +1,32 @@
 document.addEventListener('DOMContentLoaded', async function () {
+    // ===== NEW CODE: PROFILE PICTURE DISPLAY =====
+    // Create and position the profile picture element
+    const profilePicContainer = document.createElement('div');
+    profilePicContainer.style.position = 'absolute';
+    profilePicContainer.style.top = '230px';
+    profilePicContainer.style.right = '80px';
+    profilePicContainer.style.width = '120px';
+    profilePicContainer.style.height = '120px';
+    profilePicContainer.style.borderRadius = '50%';
+    profilePicContainer.style.overflow = 'hidden';
+    profilePicContainer.style.border = '3px solid #e2e8f0';
+    profilePicContainer.style.zIndex = '10';  // Ensure it stays above other elements
+    
+    const profilePic = document.createElement('img');
+    profilePic.id = 'cv-profile-picture';
+    profilePic.style.width = '100%';
+    profilePic.style.height = '100%';
+    profilePic.style.objectFit = 'cover';
+    
+    // Load from localStorage if available
+    const savedImage = localStorage.getItem('profilePicture');
+    profilePic.src = savedImage || 'data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMTIwIiBoZWlnaHQ9IjEyMCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj48cmVjdCB3aWR0aD0iMTIwIiBoZWlnaHQ9IjEyMCIgZmlsbD0iI2VlZSIvPjx0ZXh0IHg9IjUwJSIgeT0iNTAlIiBkb21pbmFudC1iYXNlbGluZT0ibWlkZGxlIiB0ZXh0LWFuY2hvcj0ibWlkZGxlIiBmaWxsPSIjOTk5IiBmb250LWZhbWlseT0iQXJpYWwiIGZvbnQtc2l6ZT0iMTIiPk5vIEltYWdlPC90ZXh0Pjwvc3ZnPg==';
+    
+    profilePicContainer.appendChild(profilePic);
+    document.body.appendChild(profilePicContainer);
+    // ===== END OF NEW CODE =====
+
+    
     // Fetch email from localStorage
     const email = localStorage.getItem('userEmail');
     if (!email) {
