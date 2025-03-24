@@ -56,7 +56,7 @@
       text-decoration: none;
       color: #333;
       font-size: 16px;
-      line-height: 40px; /* Aligning with account button */
+      line-height: 40px;
       transition: color 0.3s ease;
     }
 
@@ -73,7 +73,7 @@
       border-radius: 20px;
       font-size: 14px;
       cursor: pointer;
-      line-height: 40px; /* Aligning with navigation items */
+      line-height: 40px;
       transition: background 0.3s ease;
     }
 
@@ -103,11 +103,74 @@
     aside nav a:hover {
       background: #4a5568;
     }
+
+    /* Profile Picture Upload */
+    .profile-picture-container {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      margin-bottom: 2rem;
+    }
+
+    .profile-picture {
+      width: 150px;
+      height: 150px;
+      border-radius: 50%;
+      object-fit: cover;
+      border: 3px solid #e2e8f0;
+      background-color: #f8fafc;
+      margin-bottom: 1rem;
+    }
+
+    .upload-btn-wrapper {
+      position: relative;
+      overflow: hidden;
+      display: inline-block;
+    }
+
+    .upload-btn {
+      border: 2px solid #3182ce;
+      color: #3182ce;
+      background-color: white;
+      padding: 8px 20px;
+      border-radius: 8px;
+      font-size: 14px;
+      font-weight: 500;
+      cursor: pointer;
+      transition: all 0.3s ease;
+    }
+
+    .upload-btn:hover {
+      background-color: #3182ce;
+      color: white;
+    }
+
+    .upload-btn-wrapper input[type=file] {
+      font-size: 100px;
+      position: absolute;
+      left: 0;
+      top: 0;
+      opacity: 0;
+      cursor: pointer;
+    }
+
+    .remove-btn {
+      margin-top: 8px;
+      color: #e53e3e;
+      background: none;
+      border: none;
+      cursor: pointer;
+      font-size: 12px;
+      transition: color 0.3s ease;
+    }
+
+    .remove-btn:hover {
+      color: #c53030;
+      text-decoration: underline;
+    }
   </style>
 </head>
 <body class="flex flex-col h-screen">
-
-
   <!-- Top Navbar -->
   <header>
     <div class="logo">
@@ -145,6 +208,16 @@
         We suggest including an email and phone number.
       </p>
       <p class="mb-4 text-gray-600">* indicates a required field</p>
+
+      <!-- Profile Picture Upload Section -->
+      <div class="profile-picture-container">
+        <img id="profile-picture" src="https://via.placeholder.com/150" alt="Profile Picture" class="profile-picture">
+        <div class="upload-btn-wrapper">
+          <button class="upload-btn">Upload Profile Picture</button>
+          <input id="profile-upload" type="file" accept="image/*">
+        </div>
+        <button id="remove-picture" class="remove-btn">Remove Picture</button>
+      </div>
 
       <form id="contact-form">
         <div class="grid grid-cols-2 gap-4 mb-4">
