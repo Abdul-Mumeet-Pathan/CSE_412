@@ -45,7 +45,7 @@ document.addEventListener('DOMContentLoaded', function() {
     });
 
     // Add a button to view stored image (for debugging)
-    const viewImageBtn = document.createElement('button');
+    //const viewImageBtn = document.createElement('button');
     viewImageBtn.textContent = 'View Stored Image (Debug)';
     viewImageBtn.style.marginTop = '10px';
     viewImageBtn.style.padding = '5px 10px';
