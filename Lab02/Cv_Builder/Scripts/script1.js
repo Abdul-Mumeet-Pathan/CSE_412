@@ -1,4 +1,8 @@
 // Profile Picture Handling
+document.querySelector(".logout-btn").addEventListener("click", function() {
+    window.location.href = "login.html"; // Changed from landing.html to login.html
+});
+
 document.addEventListener('DOMContentLoaded', function() {
     // Load saved profile picture if exists
     const savedImage = localStorage.getItem('profilePicture');

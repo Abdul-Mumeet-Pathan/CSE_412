@@ -1,3 +1,6 @@
+document.querySelector(".logout-btn").addEventListener("click", function() {
+    window.location.href = "login.html"; // Changed from landing.html to login.html
+});
 document.getElementById('education-form').addEventListener('submit', async function(event) {
     event.preventDefault();
 

@@ -61,19 +61,20 @@
 
     <script>
         document.addEventListener("DOMContentLoaded", function() {
-    document.querySelector(".resume-btn").addEventListener("click", function() {
-        window.location.href = "resume-builder.html";
+        document.querySelector(".logout-btn").addEventListener("click", function() {
+            window.location.href = "login.html"; // Changed from landing.html to login.html
+        });
+
+        // Your other event listeners remain the same
+        document.querySelector(".resume-btn").addEventListener("click", function() {
+            window.location.href = "resume-builder.html";
+        });
+
+        document.querySelector(".portfolio-btn").addEventListener("click", function() {
+            window.location.href = "portfolio.html";
+        });
     });
 
-    document.querySelector(".portfolio-btn").addEventListener("click", function() {
-        window.location.href = "portfolio.html";
-    });
-
-    // Fix: Use querySelector for class selection
-    document.querySelector(".logout-btn").addEventListener("click", function() {
-        window.location.href = "landing.html"; // Redirects to landing page
-    });
-});
 
     </script>
 </body>
