@@ -1,3 +1,7 @@
+document.querySelector(".logout-btn").addEventListener("click", function() {
+    window.location.href = "login.html"; // Changed from landing.html to login.html
+});
+
 document.addEventListener('DOMContentLoaded', async function () {
     // ===== NEW CODE: PROFILE PICTURE DISPLAY =====
     // Create and position the profile picture element

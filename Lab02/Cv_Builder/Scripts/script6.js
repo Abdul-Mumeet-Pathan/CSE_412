@@ -1,3 +1,6 @@
+document.querySelector(".logout-btn").addEventListener("click", function() {
+    window.location.href = "login.html"; // Changed from landing.html to login.html
+});
 document.addEventListener('DOMContentLoaded', async function () {
     // Fetch email from localStorage
     const email = localStorage.getItem('userEmail');

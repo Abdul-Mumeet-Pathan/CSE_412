@@ -244,8 +244,212 @@ async function showPreview(template) {
           </div>
         </div>
       `;
-    }
+    } else if (template === "template4") {
+      // Professional Black & White Template
+      portfolioContent = `
+        <div class="template4 p-6">
+          <!-- Profile Picture (Right Side) -->
+          <div class="profile-pic" style="position: absolute; top: 40px; right: 40px; width: 120px; height: 120px; overflow: hidden; border: 2px solid #333;">
+            <img src="${profilePicSrc}" style="width: 100%; height: 100%; object-fit: cover;">
+          </div>
+          
+          <!-- Personal Info -->
+          <div class="section" style="margin-right: 160px; padding: 20px; background-color: #f9f9f9; border-left: 4px solid #333; margin-bottom: 20px;">
+            <h1 class="text-3xl font-bold mb-2">${safeGet(userData, "name")} ${safeGet(userData, "surname")}</h1>
+            <p class="text-lg mb-2">${safeGet(userData, "profession")}</p>
+            <p class="text-sm">${safeGet(userData, "city")}, ${safeGet(userData, "division")}</p>
+          </div>
     
+          <!-- Contact Info -->
+          <div class="section" style="padding: 20px; background-color: #f9f9f9; border-left: 4px solid #333; margin-bottom: 20px;">
+            <h4 class="text-xl font-semibold mb-3">Contact Information</h4>
+            <p>Email: ${safeGet(userData, "email")}</p>
+            <p>Phone: ${safeGet(userData, "phone")}</p>
+          </div>
+    
+          <!-- Education -->
+          <div class="section" style="padding: 20px; background-color: #f9f9f9; border-left: 4px solid #333; margin-bottom: 20px;">
+            <h4 class="text-xl font-semibold mb-3">Education</h4>
+            <p>Institution: ${safeGet(userData, "institution")}</p>
+            <p>Degree: ${safeGet(userData, "degree")} in ${safeGet(userData, "fieldOfStudy")}</p>
+            <p>Graduation Date: ${safeGet(userData, "graduationMonth")} ${safeGet(userData, "graduationYear")}</p>
+            <p>Location: ${safeGet(userData, "institutionLocation")}</p>
+          </div>
+    
+          <!-- Experience -->
+          <div class="section" style="padding: 20px; background-color: #f9f9f9; border-left: 4px solid #333;">
+            <h4 class="text-xl font-semibold mb-3">Professional Experience</h4>
+            <p>Job Title: ${safeGet(userData, "experience.title")}</p>
+            <p>Company: ${safeGet(userData, "experience.company")}</p>
+            <p>Location: ${safeGet(userData, "experience.location")}</p>
+            <p>Dates: ${safeGet(userData, "experience.startMonth")} ${safeGet(userData, "experience.startYear")} - 
+              ${safeGet(userData, "experience.currentWork") ? "Present" : `${safeGet(userData, "experience.endMonth")} ${safeGet(userData, "experience.endYear")}`}</p>
+          </div>
+        </div>
+      `;
+    
+      printStyles = `
+  @media print {
+    .template4 {
+      background-color: #ffffff !important;
+      color: #111827 !important;
+      -webkit-print-color-adjust: exact !important;
+      print-color-adjust: exact !important;
+    }
+    .template4 .section {
+      background-color: #f9f9f9 !important;
+      border-left: 4px solid #333 !important;
+      margin-bottom: 20px !important;
+    }
+    .template4 .profile-pic {
+      right: 70px !important;
+      top: 65px !important; /* Changed from 40px to 60px to lower the picture */
+      width: 140px !important;
+      height: 140px !important;
+      border: 2px solid #333 !important;
+    }
+    body {
+      margin: 20px !important;
+    }
+  }
+`;
+    } else if (template === "template5") {
+      // Sidebar with Timeline
+      portfolioContent = `
+        <div class="template5">
+          <!-- Sidebar -->
+          <div class="sidebar">
+            <!-- Profile Picture -->
+            <div style="width: 150px; height: 150px; margin: 0 auto 20px;
+                        border-radius: 50%; overflow: hidden; border: 3px solid #4c51bf;">
+              <img src="${profilePicSrc}" style="width: 100%; height: 100%; object-fit: cover;">
+            </div>
+            
+            <!-- Contact Info -->
+            <div class="mb-6">
+              <h4 class="text-lg font-semibold mb-3">Contact</h4>
+              <p>${safeGet(userData, "email")}</p>
+              <p>${safeGet(userData, "phone")}</p>
+              <p>${safeGet(userData, "city")}, ${safeGet(userData, "division")}</p>
+            </div>
+    
+            <!-- Skills -->
+            <div>
+              <h4 class="text-lg font-semibold mb-3">Skills</h4>
+              <ul style="list-style-type: none; padding-left: 0;">
+                ${safeGet(userData, "skills", []).map(skill => `
+                  <li>${skill.skill || "N/A"}</li>
+                `).join("")}
+              </ul>
+            </div>
+          </div>
+    
+          <!-- Main Content -->
+          <div style="padding-left: 20px;">
+            <h1 class="text-3xl font-bold mb-2">${safeGet(userData, "name")} ${safeGet(userData, "surname")}</h1>
+            <p class="text-xl mb-6">${safeGet(userData, "profession")}</p>
+    
+            <!-- Timeline Sections -->
+            <div style="padding-left: 20px;">
+              <!-- Education -->
+              <div class="timeline-item">
+                <h4 class="text-xl font-semibold mb-3">Education</h4>
+                <p class="font-semibold">${safeGet(userData, "degree")} in ${safeGet(userData, "fieldOfStudy")}</p>
+                <p class="text-sm text-gray-600 mb-2">${safeGet(userData, "institution")}</p>
+                <p>Graduated: ${safeGet(userData, "graduationMonth")} ${safeGet(userData, "graduationYear")}</p>
+                <p>Location: ${safeGet(userData, "institutionLocation")}</p>
+              </div>
+    
+              <!-- Experience -->
+              <div class="timeline-item">
+                <h4 class="text-xl font-semibold mb-3">Professional Experience</h4>
+                <p class="font-semibold">${safeGet(userData, "experience.title")} at ${safeGet(userData, "experience.company")}</p>
+                <p class="text-sm text-gray-600 mb-2">
+                  ${safeGet(userData, "experience.startMonth")} ${safeGet(userData, "experience.startYear")} - 
+                  ${safeGet(userData, "experience.currentWork") ? "Present" : `${safeGet(userData, "experience.endMonth")} ${safeGet(userData, "experience.endYear")}`}
+                  ${safeGet(userData, "experience.remote") ? " (Remote)" : ""}
+                </p>
+                <p>${safeGet(userData, "experience.description")}</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      `;
+    
+      printStyles = `
+        @media print {
+          @media print {
+      .template5 {
+        display: grid !important;
+        grid-template-columns: 250px 1fr !important;
+        gap: 20px !important;
+        padding: 20px !important;
+        position: relative !important;
+      }
+      .template5::before {
+        content: '' !important;
+        display: none !important;
+        position: absolute !important;
+        left: calc(250px + 20px) !important;
+        top: 0 !important;
+        bottom: 0 !important;
+        width: 2px !important;
+        background-color: #4299e1 !important;
+        transform: translateX(-50%) !important;
+        -webkit-print-color-adjust: exact !important;
+        print-color-adjust: exact !important;
+      }
+          .template5 .sidebar {
+            background-color: #f7fafc !important;
+      padding: 20px !important;
+      height: auto !important;
+            border-radius: 8px !important;
+            -webkit-print-color-adjust: exact !important;
+            print-color-adjust: exact !important;
+          }
+            .template5::after {
+      content: '' !important;
+      position: absolute !important;
+      left: calc(250px + 20px) !important;
+      top: 20px !important;
+      bottom: 20px !important;
+      width: 2px !important;
+      background-color: #4299e1 !important;
+      -webkit-print-color-adjust: exact !important;
+      print-color-adjust: exact !important;
+      z-index: 1 !important;
+      height: auto !important; /* Let top/bottom handle height */
+    }
+          .template5 .timeline-item {
+            position: relative !important;
+            padding-left: 30px !important;
+            margin-bottom: 30px !important;
+            border-left: 2px solid #e2e8f0 !important;
+          }
+          .template5 .timeline-item:before {
+            content: '' !important;
+            position: absolute !important;
+            left: -8px !important;
+            top: 0 !important;
+            width: 14px !important;
+            height: 14px !important;
+            border-radius: 50% !important;
+            background-color: #4c51bf !important;
+            -webkit-print-color-adjust: exact !important;
+            print-color-adjust: exact !important;
+            z-index: 1 !important;
+          }
+          .template5 img {
+            display: block !important;
+            margin: 0 auto 20px !important;
+          }
+          body {
+            margin: 0 !important;
+            padding: 20px !important;
+          }
+        }
+      `;
+    }
 
     // Display the preview
     previewContent.innerHTML = portfolioContent;

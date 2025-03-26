@@ -1,4 +1,8 @@
 // Function to store data in localStorage
+
+document.querySelector(".logout-btn").addEventListener("click", function() {
+    window.location.href = "login.html"; // Changed from landing.html to login.html
+});
 function storeData(key, data) {
     localStorage.setItem(key, JSON.stringify(data));
 }
